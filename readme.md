@@ -4,7 +4,7 @@ A personal repository that I intend to fill with different UI based boilerplates
 
 ##### Update 2020-07-23
 
-The repo has now turned into a learning repository for Chris and we should probably move this to Stuarts shared base some day.
+The repo has now turned into a learning repository for Chris ~~and we should probably move this to Stuarts shared base some day.~~
 
 ##### Boilerplates
 
