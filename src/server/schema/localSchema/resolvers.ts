@@ -14,6 +14,9 @@ export default {
     author: (parent, args, context) => {
       return authors.find((author) => author.name === args.name);
     },
+    test: () => {
+      return ["DEF"];
+    },
   },
 
   Book: {

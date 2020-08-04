@@ -17,30 +17,37 @@ export default (): RequestHandler => async (req, res, next) => {
     fetch,
   });
 
-  const cache = new InMemoryCache({
-    typePolicies: {
-      Book: { keyFields: ["id"] },
-    },
-  });
+  const cache = new InMemoryCache();
 
   const book = {
-    book: "The latest book",
-    author: "Chris",
-    id: 5,
+    id: "5",
     __typename: "Book",
+    book: "The latest book",
+    author: {
+      name: "Chris",
+      location: "Barcelona",
+      age: "100",
+      __typename: "Author",
+    },
   };
 
   const query = gql`
     query getTest {
-      test
-      books
+      books {
+        id
+        book
+        author {
+          name
+          location
+          age
+        }
+      }
     }
   `;
 
   cache.writeQuery({
     query,
     data: {
-      test: ["abc"],
       books: [book],
     },
   });
@@ -51,6 +58,9 @@ export default (): RequestHandler => async (req, res, next) => {
     cache,
   });
 
+  console.log("Before", client.extract());
+  console.log("====================");
+
   const appTree = (
     <ApolloProvider client={client}>
       <LaunchesPast />
@@ -59,6 +69,10 @@ export default (): RequestHandler => async (req, res, next) => {
 
   renderToStringWithData(appTree).then((content) => {
     const initialState = client.extract();
+
+    console.log("After", client.extract());
+    console.log("====================");
+
     const html = `
         <!doctype html>
         <html>

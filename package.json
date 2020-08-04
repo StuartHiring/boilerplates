@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "ts-node-dev tools/scripts/development",
     "lint": "eslint '**/*.{js,ts,tsx}' --max-warnings 20",
-    "format": "prettier --write '*.{js,ts,tsx}' 'src/**/*.{js,ts,tsx}'"
+    "format": "prettier --write '*.{js,ts,tsx}' 'src/**/*.{js,ts,tsx}'",
+    "experiment": "ts-node-dev src/server/testServer.tsx"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [

@@ -4,7 +4,7 @@ export default gql`
   type Book {
     book: String!
     author: Author
-    id: Int!
+    id: ID!
   }
 
   type Author {
@@ -15,8 +15,9 @@ export default gql`
 
   type Query {
     books: [Book]
-    book(id: Int!): Book
+    book(id: ID!): Book
     authors: [Author]
     author(name: String!): Author
+    test: [String]
   }
 `;
