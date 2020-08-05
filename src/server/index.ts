@@ -6,6 +6,7 @@ import webpackHotMiddleware from "webpack-hot-middleware";
 import { ApolloServer } from "apollo-server-express";
 import createSchema from "./schema";
 import ssr from "./middlewares/ssr";
+import configureCache from "./configureCache";
 
 type ServerArgs = {
   mode: "production" | "development";
@@ -42,7 +43,7 @@ const expressServer = async ({
     );
   }
 
-  app.use(ssr());
+  app.use(ssr(configureCache));
 
   // app will be started in the tools/development script
   return app;
