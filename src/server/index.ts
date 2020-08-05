@@ -5,6 +5,7 @@ import webpackDevMiddleware from "webpack-dev-middleware";
 import webpackHotMiddleware from "webpack-hot-middleware";
 import { ApolloServer } from "apollo-server-express";
 import createSchema from "./schema";
+import fetchBooks from "./middlewares/fetchBooks";
 import ssr from "./middlewares/ssr";
 import configureCache from "./configureCache";
 
@@ -43,6 +44,7 @@ const expressServer = async ({
     );
   }
 
+  app.use(fetchBooks());
   app.use(ssr(configureCache));
 
   // app will be started in the tools/development script

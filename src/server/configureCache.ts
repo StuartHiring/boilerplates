@@ -1,7 +1,7 @@
 import { gql, InMemoryCache } from "@apollo/client";
-import { Request } from "express";
+import { Request, Response } from "express";
 
-export default (req: Request): InMemoryCache => {
+export default (req: Request, res: Response): InMemoryCache => {
   const cache = new InMemoryCache();
 
   const book = {
@@ -28,6 +28,9 @@ export default (req: Request): InMemoryCache => {
         }
       }
       url
+      resObject {
+        bib_key
+      }
     }
   `;
 
@@ -36,6 +39,7 @@ export default (req: Request): InMemoryCache => {
     data: {
       books: [book],
       url: req.baseUrl,
+      resObject: res.locals.openLibraryResponse,
     },
   });
 

@@ -67,6 +67,7 @@
     "@apollo/client": "3.0.2",
     "apollo-link-http": "^1.5.17",
     "apollo-server-express": "^2.16.0",
+    "axios": "^0.19.2",
     "cross-fetch": "^3.0.5",
     "express": "^4.17.1",
     "graphql": "^15.3.0",
