@@ -77,7 +77,7 @@ const expressServer = () => {
   app.use((req, res, next) => {
     const link = createHttpLink({
       uri: "http://localhost:3000/graphql",
-      fetch, //cross-fetch
+      fetch, // cross-fetch
     });
     const cache = new InMemoryCache();
 

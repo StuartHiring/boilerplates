@@ -5,11 +5,12 @@ import {
   createHttpLink,
   gql,
 } from "@apollo/client";
+import { StaticRouter } from "react-router-dom";
 import { renderToStringWithData } from "@apollo/client/react/ssr";
 import { RequestHandler, Request, Response } from "express";
 import fetch from "cross-fetch";
 import React from "react";
-import LaunchesPast from "../../client/LaunchesPast";
+import LaunchesPast from "../../shared/components/LaunchesPast";
 
 export default (
   configureCache: (req: Request, res: Response) => InMemoryCache
@@ -29,7 +30,9 @@ export default (
 
   const appTree = (
     <ApolloProvider client={client}>
-      <LaunchesPast />
+      <StaticRouter location={req.path} context={{}}>
+        <LaunchesPast />
+      </StaticRouter>
     </ApolloProvider>
   );
 

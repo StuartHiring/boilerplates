@@ -27,10 +27,12 @@
   "extends": [
     "airbnb",
     "prettier",
+    "prettier/react",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended"
   ],
   "rules": {
+    "react/prop-types": ["off"],
     "prettier/prettier": ["error"],
     "react/jsx-filename-extension": [
       "error",
@@ -52,7 +54,7 @@
       // Disable the typescript rule for JS files
       "files": ["*.js"],
       "rules": {
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
       }
     }
   ]

@@ -11,22 +11,14 @@ export default (req: Request, res: Response): InMemoryCache => {
     author: {
       name: "Chris",
       location: "Barcelona",
-      age: "100",
+      age: 100,
       __typename: "Author",
     },
   };
 
   const query = gql`
-    query getTest {
-      books {
-        id
-        book
-        author {
-          name
-          location
-          age
-        }
-      }
+    {
+      books
       url
       resObject {
         bib_key

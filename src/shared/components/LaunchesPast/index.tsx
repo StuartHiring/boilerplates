@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { gql, useQuery, useLazyQuery } from "@apollo/client";
 
-type BookREsponse = {
+type BookResponse = {
   launchesPast: any[];
   test: string[];
   books: {
@@ -9,6 +10,8 @@ type BookREsponse = {
     book: string;
     author: {
       name: string;
+      location: string;
+      age: number;
     };
   }[];
 };
@@ -27,13 +30,15 @@ const GET_LAUNCHES_PAST = gql`
       book
       author {
         name
+        location
+        age
       }
     }
   }
 `;
 
-const LaunchesPast = () => {
-  const { loading, error, data } = useQuery<BookREsponse>(GET_LAUNCHES_PAST, {
+const LaunchesPast: React.FC = () => {
+  const { loading, error, data } = useQuery<BookResponse>(GET_LAUNCHES_PAST, {
     variables: { limit: 3 },
   });
 
@@ -68,7 +73,7 @@ const LaunchesPast = () => {
       </button> */}
       {data?.books?.map((item) => (
         <div key={item.id}>
-          {item.id}| {item.book} | {item.author.name}
+          {item.id} | {item.book} | {item.author.name}
         </div>
       ))}
       <div>==============================</div>
