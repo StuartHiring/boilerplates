@@ -6,10 +6,11 @@ import {
   introspectSchema,
 } from "graphql-tools";
 import fetch from "cross-fetch";
+import { GraphQLSchema } from "graphql";
 import typeDefs from "./localSchema/typeDefs";
 import resolvers from "./localSchema/resolvers";
 
-const createSchema = async () => {
+const createSchema = async (): Promise<GraphQLSchema> => {
   const localSchema = makeExecutableSchema({
     typeDefs,
     resolvers,
