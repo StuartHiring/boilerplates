@@ -1,5 +1,7 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
+import Navbar from "../Navbar";
 import LaunchesPast from "../../components/LaunchesPast";
 
 interface AppProps extends RouteComponentProps {
@@ -12,7 +14,14 @@ const App: React.FC<AppProps> = ({ location, match, route }) => {
   console.log(match);
   console.log(route);
 
-  return <LaunchesPast />;
+  const isAuth = false;
+
+  return (
+    <>
+      <Navbar isAuth={isAuth} />
+      {renderRoutes(route.routes)}
+    </>
+  );
 };
 
 export default App;
