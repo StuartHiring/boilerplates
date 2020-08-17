@@ -6,10 +6,13 @@ import {
   gql,
 } from "@apollo/client";
 import { StaticRouter } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
 import { renderToStringWithData } from "@apollo/client/react/ssr";
 import { RequestHandler, Request, Response } from "express";
 import fetch from "cross-fetch";
 import React from "react";
+import { render } from "react-dom";
+import routes from "../../shared/routes";
 import LaunchesPast from "../../shared/components/LaunchesPast";
 
 export default (
@@ -28,9 +31,13 @@ export default (
     cache,
   });
 
+  // scss fails during ssr because typescript cannot read it? It's only when renderRoutes(routes) is used during
+  // SSR that the scss files cannot load, client side they load perfectly fine. It might be something to do with
+  // ts-node-dev?
   const appTree = (
     <ApolloProvider client={client}>
       <StaticRouter location={req.path} context={{}}>
+        {/* {renderRoutes(routes)} */}
         <LaunchesPast />
       </StaticRouter>
     </ApolloProvider>

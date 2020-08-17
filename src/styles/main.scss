@@ -1,7 +1,16 @@
 @import "./variables";
 
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    background-color: $red;
+  margin: 0;
+  padding: 0;
+  background-color: $grey;
+  font-family: $font-roboto;
 }

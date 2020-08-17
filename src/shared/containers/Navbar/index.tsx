@@ -24,15 +24,15 @@ const Navbar: React.FC<NavbarProps> = ({ isAuth }) => {
 
   const renderNavbarItems = NAVBAR_ITEMS.map((item) => {
     return (
-      <li key={item.name}>
+      <li className={styles.li} key={item.name}>
         <NavLink to={item.to}>{item.name}</NavLink>
       </li>
     );
   });
 
   return (
-    <div className={styles.Navbar}>
-      <ul>{renderNavbarItems}</ul>
+    <div className={styles.navbar}>
+      <ul className={styles.ul}>{renderNavbarItems}</ul>
     </div>
   );
 };
