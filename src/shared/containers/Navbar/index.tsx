@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./Navbar.scss";
 
 interface NavbarProps {
   isAuth: boolean;
@@ -30,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ isAuth }) => {
   });
 
   return (
-    <div>
+    <div className={styles.Navbar}>
       <ul>{renderNavbarItems}</ul>
     </div>
   );

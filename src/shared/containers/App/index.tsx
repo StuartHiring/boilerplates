@@ -2,7 +2,7 @@ import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
 import Navbar from "../Navbar";
-import LaunchesPast from "../../components/LaunchesPast";
+import "../../../styles/main.scss";
 
 interface AppProps extends RouteComponentProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
